@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\recets;
 use App\Models\categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\recetesrequest;
-
 class RecetsController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class RecetsController extends Controller
      */
     public function index()
     {
-       $recetes=recets::all();
+       $recetes=recets::where('user_id',Auth::id())->get();
        return view('recetes.index',compact('recetes'));
     }
 
@@ -37,11 +37,12 @@ class RecetsController extends Controller
         $formefield['image']=$request->file('image')->store('recete','public');
         
     }    
-       $product = recets::create([
+       recets::create([
         'title' => $formefield['recete_name'],
         'description' => $formefield['description'],
         'image' => $formefield['image'],
         'categories_id'=>$request->input('categories_id'),
+        'user_id' => Auth::id(),
     ]);
         return to_route('recetes.index');
     }

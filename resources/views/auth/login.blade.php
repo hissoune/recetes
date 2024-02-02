@@ -1,7 +1,17 @@
-<x-guest-layout>
+{{-- <x-guest-layout> --}}
+    @extends('layouts.guest')
+   
+@section('content')
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="">
+    <h1 class="text-center mt-4 text-white my-6 "><strong>ffffffffffffffffff</strong></h1>
 
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="flex flex-lg-row justify-center flex-sm-column">
+    <div class="bg-blue-500 w-80">
+      <h3 >welcome user</h3>
+    </div>
+     <div class="border p-10 rounded shadow bg-gray-500 w-80">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -32,7 +42,7 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-between justify-between mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
@@ -44,4 +54,8 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</div>
+</div>
+</div>
+{{-- </x-guest-layout> --}}
+@endsection

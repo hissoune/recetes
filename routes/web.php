@@ -17,11 +17,17 @@ use App\Http\Controllers\CategoriesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [welcomecontroller::class,'index'])->name('home');
+// In routes/web.php
 
-Route::get('/dashboard', [welcomecontroller::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::resource('/welcome', WelcomeController::class);
+
+// Add a custom search route within the 'welcome' resource
+Route::get('/welcome/search', [WelcomeController::class, 'search'])->name('welcome.search');
+Route::get('/welcome/show/{recete}', [WelcomeController::class, 'show'])->name('welcome.show');
+// Route::get('/recetes/show/{recete}', [welcomecontroller::class,'show'])->name('welcome.show');
+
+Route::get('/dashboard',[WelcomeController::class, 'statistique'] )->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

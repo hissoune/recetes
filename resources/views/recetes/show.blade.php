@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<x-guest-layout>
+
     <div class="w-full my-4 h-auto">
         <div class="bg-white rounded-lg overflow-hidden shadow-md">
             <img src="{{ asset('storage/' . $recete->image) }}" class="w-full h-64 object-cover" alt="Image">
@@ -19,5 +19,4 @@
         </div>
     </div>
     
-</x-guest-layout>
 @endsection
