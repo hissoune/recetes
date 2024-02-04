@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="">
-        <a href="{{ route('categories.create') }}" class="btn-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add</a>
+        <a href="{{ route('categories.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">Add</a>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             @foreach ($categories as $category)
                 <div class="bg-white overflow-hidden shadow-md rounded-lg">
